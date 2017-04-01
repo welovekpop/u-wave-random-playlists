@@ -1,0 +1,35 @@
+{
+  "name": "@wlk/u-wave-random-playlists",
+  "version": "0.0.0",
+  "description": "üWave plugin adding a \"random\" mode to the waitlist, picking a random song from a random playlist instead of picking the first song from the active playlist.",
+  "main": "index.js",
+  "scripts": {
+    "build:server": "babel src/index.js --out-file index.js",
+    "build:client": "cross-env BABEL_ENV=client browserify src/manage.js -t babelify -o client.js",
+    "build": "npm run build:server && npm run build:client",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/welovekpop/u-wave-random-playlists.git"
+  },
+  "author": "Renée Kooi <renee@kooi.me>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/welovekpop/u-wave-random-playlists/issues"
+  },
+  "homepage": "https://github.com/welovekpop/u-wave-random-playlists#readme",
+  "dependencies": {
+    "micro": "^7.2.2",
+    "pify": "^2.3.0",
+    "random-item": "^1.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.0",
+    "babel-preset-env": "^1.2.2",
+    "babelify": "^7.3.0",
+    "browserify": "^14.1.0",
+    "cross-env": "^3.2.4",
+    "unfetch": "^2.1.2"
+  }
+}

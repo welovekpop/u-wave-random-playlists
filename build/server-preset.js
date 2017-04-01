@@ -1,0 +1,12 @@
+module.exports = {
+  presets: [
+    ['env', {
+      targets: {
+        node: 4
+      },
+      exclude: [
+        'transform-regenerator'
+      ]
+    }]
+  ]
+}
