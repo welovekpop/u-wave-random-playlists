@@ -1,8 +1,22 @@
 const pify = require('pify')
 const path = require('path')
 const readFile = pify(require('fs').readFile)
-const randomItem = require('random-item')
+const randomInt = require('random-integer')
 const micro = require('micro')
+
+function randomPlaylist (playlists) {
+  const weights = playlists.map(playlist => playlist.size)
+  const total = weights.reduce((a, b) => a + b, 0)
+  const random = randomInt(total)
+
+  let acc = 0;
+  for (let i = 0; i < playlists.length; i++) {
+    acc += weights[i];
+    if (acc > random) {
+      return playlists[i];
+    }
+  }
+}
 
 module.exports = (opts) => (uw) => {
   /**
@@ -90,7 +104,7 @@ module.exports = (opts) => (uw) => {
       return null
     }
 
-    const playlist = randomItem(await user.getPlaylists())
+    const playlist = randomPlaylist(await user.getPlaylists())
     const playlistItem = await playlist.getItemAt(Math.floor(Math.random() * playlist.size))
 
     await playlistItem.populate('media').execPopulate()
