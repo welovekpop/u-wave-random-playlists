@@ -1,6 +1,6 @@
 {
   "name": "@wlk/u-wave-random-playlists",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "üWave plugin adding a \"random\" mode to the waitlist, picking a random song from a random playlist instead of picking the first song from the active playlist.",
   "main": "index.js",
   "scripts": {
