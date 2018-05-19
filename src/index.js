@@ -21,7 +21,7 @@ function randomPlaylist (playlists) {
 module.exports = (opts) => (uw) => {
   /**
    * Check if randomization is enabled.
-   * 
+   *
    * @return {Promise.<boolean>}
    */
   function shouldRandomize () {
@@ -56,6 +56,17 @@ module.exports = (opts) => (uw) => {
       data: { value }
     }))
   }
+
+  const subscription = uw.subscription();
+  subscription.on('message', async (channel, message) => {
+    if (channel !== 'uwave') return;
+    try {
+      const { command } = JSON.parse(message);
+      if (command === 'user:join') {
+        await publishRandomize();
+      }
+    } catch {}
+  });
 
   const server = micro(async (req, res) => {
     if (req.url === '/status') {
