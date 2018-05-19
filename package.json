@@ -25,9 +25,10 @@
     "random-integer": "^2.0.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.24.0",
-    "babel-preset-env": "^1.2.2",
-    "babelify": "^7.3.0",
+    "@babel/core": "7.0.0-beta.47",
+    "@babel/cli": "7.0.0-beta.47",
+    "@babel/preset-env": "7.0.0-beta.47",
+    "babelify": "^9.0.0",
     "browserify": "^14.1.0",
     "cross-env": "^3.2.4",
     "unfetch": "^2.1.2"
